@@ -23,37 +23,34 @@ function readDataFromFile(filePath) {
 function generatePrompt(examinationBody, level, subject, questionType, section, sectionData, globalData) {
   section= section.replace(/ - .*/, "");
   const prompt = `
-  Generate a question and its corresponding answer (Explain like a lecturer, but make sure a high school student can understand, include all working and be extensive in explanations) that aligns with the context that is added below.
-  for an equation like this a2+2ab+b2, if the letter is directly followed by a number like this a2 then assume the 2 is an exponent but if it is be like this 2a assume it is being multiplied, do not use the equation as the basis for every question, Switch it up
-  
-  
-  Examination Body: ${examinationBody}
+    Examination Body: ${examinationBody}
+    Level: ${level}
+    Subject: ${subject}
+    Question Type: ${questionType}
 
-  Level: ${level}
+    AIM: ${globalData['AIMS']}
 
-  Subject: ${subject}
+    Format of the Examinations: ${globalData['FORMAT']}
 
-  Question Type: ${questionType}
+    Glossary: ${globalData['GLOSSARY']}
 
-  When generating the question, ensure that question type is considered
-  In multiple choice, one and only one should be the correct option
+    ${section}: ${sectionData[section]}
 
+    Generate a question and its corresponding answer that aligns with the provided context. The question should be tailored to the examination body, level, subject, and question type specified above.
 
+    Ensure that the generated question and answer meet the following criteria:
+    1. The question should be relevant to the subject and question type.
+    2. The answer should be comprehensive and explanatory, suitable for a high school student's understanding.
+    3. If the question context warrants it, the answer should include working steps, diagrams, graphs, or mathematical notation as needed.
 
-  AIM: ${globalData['AIMS']}
+    Additionally, use the following special tokens in the response to indicate specific elements:
+    - [TABLE] for tables or data representations
+    - [SHAPE] for shapes and diagrams
+    - [MATH] for mathematical notation
 
+    Feel free to include relevant examples, calculations, or scenarios that enhance the educational value of the question and answer pair.
 
-
-  Format of the Examinations: ${globalData['FORMAT']}
-
-
-
-
-  Glossary: ${globalData['GLOSSARY']}
-
-
-
-  ${section}: ${sectionData[section]}
+    Please provide a detailed response that ensures a comprehensive explanation of the concept, making it accessible to high school students while covering all relevant aspects.
   `;
   return prompt;
 }
