@@ -1,9 +1,7 @@
 import Link from "next/link";
-import ThemeChanger from "./DarkSwitch";
 import Image from "next/image"
 import { Disclosure } from "@headlessui/react";
-import SignInModal from "../../pages/auth/signin";
-import SignUpModal from "../../pages/auth/signup";
+
 
 const Navbar = () => {
   const navigation = [
@@ -16,7 +14,6 @@ const Navbar = () => {
   return (
     <div className="w-full ">
       <nav className="container relative flex flex-wrap items-center justify-between p-8 mx-auto lg:justify-between xl:px-0 z-20">
-        {/* Logo  */}
         <Disclosure>
           {({ open }) => (
             <>
@@ -35,7 +32,6 @@ const Navbar = () => {
                     <span>Sage AI</span>
                   </span>
                 </Link>
-
                 <Disclosure.Button
                   aria-label="Toggle Menu"
                   className="px-2 py-1 ml-auto text-gray-500 rounded-md lg:hidden hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:text-gray-300 dark:focus:bg-trueGray-700">
@@ -62,7 +58,7 @@ const Navbar = () => {
                 <Disclosure.Panel className="flex flex-wrap w-full my-5 lg:hidden">
                   <>
                     {navigation.map((item, index) => (
-                      <Link key={index} href="/" className="w-full px-4 py-2 -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none">
+                      <Link key={index} href={`/${item.toLowerCase()}`} className="w-full px-4 py-2 -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none">
                           {item}
                       </Link>
                     ))}
@@ -84,7 +80,7 @@ const Navbar = () => {
           <ul className="items-center justify-end flex-1 pt-6 list-none lg:pt-0 lg:flex">
             {navigation.map((menu, index) => (
               <li className="mr-3 nav__item" key={index}>
-                <Link href="/" className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800">
+                <Link href={`/${menu.toLowerCase()}`} className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800">
                     {menu}
                 </Link>
               </li>
@@ -93,11 +89,17 @@ const Navbar = () => {
         </div>
 
         <div className="hidden mr-3 space-x-4 lg:flex nav__item">
-          <SignInModal buttonContent={"Login"}/>
-          <SignUpModal buttonContent={"Sign Up"}/>
+            <button 
+            className="px-4 py-2 text-lg font-medium text-center text-white bg-customBlue rounded-md">
+              Login
+          </button>
+          <button
+            className="px-4 py-2 text-lg font-medium text-center text-white bg-gray-600 rounded-md"
+          >
+            Sign Up
+          </button>
           
 
-          <ThemeChanger />
         </div>
         
       </nav>

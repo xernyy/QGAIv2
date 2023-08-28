@@ -1,8 +1,8 @@
 import Head from "next/head";
-import Hero from "../components/hero";
-import Navbar from "../components/navbar";
-import Footer from "../components/footer";
-import PopupWidget from "../components/popupWidget";
+import Hero from "./hero";
+import Navbar from "./navbar";
+import Footer from "./footer";
+import PopupWidget from "./popupWidget";
 
 const HomePageComponent = () => {
   return (

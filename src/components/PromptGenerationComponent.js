@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import QAGComponent from './QAGComponent';;
-
+import Navbar from './navbar';
 const PromptGenerationComponent = () => {
   // Define ExaminationOptions object within the component
 
@@ -75,6 +75,7 @@ const PromptGenerationComponent = () => {
 
   return (
     <div>
+      <Navbar/>
       <h1>Generate Questions</h1>
       <div>
         <label>Examination Body:

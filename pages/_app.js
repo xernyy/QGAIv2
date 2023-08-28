@@ -1,14 +1,14 @@
 import { ThemeProvider } from "next-themes";
 import "../css/tailwind.css";
-import { SessionProvider } from 'next-auth/react';
+import { UserProvider } from '@auth0/nextjs-auth0/client';;
 
 function MyApp({ Component, pageProps }) {
   return (
-    <SessionProvider>
+    <UserProvider>
     <ThemeProvider attribute="class">
       <Component {...pageProps} />
     </ThemeProvider>
-    </SessionProvider>
+    </UserProvider>
   );
 }
 

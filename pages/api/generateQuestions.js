@@ -111,7 +111,7 @@ export default async function handler(req, res) {
     
     // Generate the prompt.
     const prompt = generatePrompt(examinationBody, level, subject, questionType, section, sectionData, globalData);
-    
+    console.log(process.env.OPEN_AI_API_KEY)
     // Send the prompt to the GPT-4 API using your API request function.
     const response = await makeAPIRequest(prompt);
 

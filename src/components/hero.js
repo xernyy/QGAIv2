@@ -2,7 +2,6 @@ import Image from "next/image";
 import Container from "./container";
 import heroImg from "../../public/img/hero.png"
 import AnimatedHeadline from "./AnimatedText"
-import SignInModal from "../../pages/auth/signin";
 import React, { useState } from "react";
 
 const Hero = () => {
@@ -23,10 +22,14 @@ const Hero = () => {
                 From questions to mastery.
               </li>
             </ul>
-          </div>            
+          </div>  
+                    
 
           <div className="mt-4">
-            <SignInModal buttonContent={"Start Learning Now"}/>
+            <button
+              className="px-4 py-2 text-lg font-medium text-center text-white bg-customBlue rounded-md">
+              Start Learning Now
+              </button>
           </div>
           
 
